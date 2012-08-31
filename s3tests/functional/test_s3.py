@@ -3167,6 +3167,13 @@ def test_atomic_write_4mb():
 def test_atomic_write_8mb():
     _test_atomic_write(1024*1024*8)
 
+@attr(resource='object')
+@attr(method='put')
+@attr(operation='write atomicity')
+@attr(assertion='3GB successful')
+def test_atomic_write_3gb():
+    _test_atomic_write(1024*1024*1024*3)
+
 def _test_atomic_dual_write(file_size):
     """
     create an object, two sessions writing different contents
